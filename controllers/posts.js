@@ -11,10 +11,13 @@ module.exports = {
       console.log(err);
     }
   },
-  getFeed: async (req, res) => {
+  getMovies: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.API_KEY}&language=en-US&query=the%20godfather&page=1&include_adult=false`;
+      const response = await fetch(url);
+      const movies = await response.json()
+      console.log(movies)
+      res.render("feed.ejs", { movies: movies.results });
     } catch (err) {
       console.log(err);
     }

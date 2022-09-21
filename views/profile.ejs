@@ -3,23 +3,19 @@
   <div class="row mt-5">
       <div class="col-6">
           <div>
-              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <p><strong>Welcome</strong>: <%= user.userName %></p>
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
           <div class="mt-5">
-            <h2>Add a post</h2>
+            <h2>Update Profile</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea class="form-control" id="bio" name="bio"></textarea>
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label">Caption</label>
-                <textarea class="form-control" id="caption" name="caption"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
+                <label for="imgUpload" class="form-label">Profile Picture</label>
                 <input type="file" class="form-control" id="imageUpload" name="file">
               </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
@@ -37,7 +33,9 @@
         <% } %>
         </ul>
         <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+          <label for="search" class="form-label">Search Movies!</label>
+          <input type="search" class="form-control" id="search" name="search" placeholder="Enter movie name">
+          <a class="btn btn-primary" href="/search">Search</a>
         </div>  
       </div>  
     </div>
