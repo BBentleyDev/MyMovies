@@ -1,0 +1,15 @@
+<%- include('partials/header') -%>
+  <div class="container-fluid">
+    <div class="row justify-content-evenly mt-5 gy-5">
+        <% for(let i=0; i < watchlist.length; i++) {%>
+          
+          <div class="card text-center" style="width: 18rem;">
+            <img src='<%= watchlist[i].image%>' id="poster" class="card-img-top" alt="movie poster">
+            <div class="card-body">
+              <h5 class="card-title" id="title"><%= watchlist[i].title%></h5>
+            </div>
+          </div>
+        <% } %>
+    </div>
+  </div>  
+<%- include('partials/footer') -%>

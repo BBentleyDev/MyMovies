@@ -1,15 +1,18 @@
 <%- include('partials/header') -%>
-  <div class="container">
-    <div class="row justify-content-center mt-5">
-      <ul class="row list-unstyled">
+  <div class="container-fluid">
+    <div class="row justify-content-evenly mt-5 gy-5">
         <% for(let i=0; i < movies.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="#">
-              <%= movies[i].title%>
-            </a>
-          </li>
+          
+          <div class="card text-center" style="width: 18rem;">
+            <img src="https://image.tmdb.org/t/p/w500<%= movies[i].poster_path%>" id="poster" class="card-img-top" alt="movie poster">
+            <div class="card-body">
+              <h5 class="card-title" id="title"><%= movies[i].title%></h5>
+              <form action="/post/addToWatchList" method="POST">
+                <button type="submit" class="btn btn-primary" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
+              </form>
+            </div>
+          </div>
         <% } %>
-        </ul>
     </div>
   </div>  
 <%- include('partials/footer') -%>
