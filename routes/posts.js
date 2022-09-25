@@ -9,6 +9,10 @@ router.get("/:id", ensureAuth, postsController.getPost);
 
 router.post("/createPost", upload.single("file"), postsController.createPost);
 
+// router.post("/rateAndReview", postsController.rateAndReview);
+
+router.post("/addToWatchList", postsController.addToWatchList);
+
 router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);

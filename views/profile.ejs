@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container">
+<div class="container-fluid">
   <div class="row mt-5">
       <div class="col-6">
           <div>
@@ -33,9 +33,11 @@
         <% } %>
         </ul>
         <div class="row justify-content-center mt-5">
-          <label for="search" class="form-label">Search Movies!</label>
-          <input type="search" class="form-control" id="search" name="search" placeholder="Enter movie name">
-          <a class="btn btn-primary" href="/search">Search</a>
+          <form class="needs-validation" action="/search" method="POST">
+            <label for="search" class="form-label">Search Movies!</label>
+            <input type="search" class="form-control" id="search" name="search" placeholder="Enter movie name" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
         </div>  
       </div>  
     </div>

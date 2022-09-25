@@ -26,11 +26,28 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <header class="container">
-      <div class="text-center">
-        <h1 class=""><a href="/profile">MyMovies</a></h1>
-        <span>The movie journalling app</span>
-      </div>
+    <header class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/profile">MyMovies</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Watched Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/watchlist">To Watch Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Set Goal</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     </header>
   </body>
 </html>
