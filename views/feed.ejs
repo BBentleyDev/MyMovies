@@ -4,7 +4,11 @@
         <% for(let i=0; i < movies.length; i++) {%>
           
           <div class="card text-center" style="width: 18rem;">
+            <% if (!movies[i].poster_path) { %>
+            <img src="/imgs/noPoster.jpg" id="poster" class="card-img-top" alt="movie poster">
+            <%} else { %>
             <img src="https://image.tmdb.org/t/p/w500<%= movies[i].poster_path%>" id="poster" class="card-img-top" alt="movie poster">
+            <% } %>
             <div class="card-body">
               <h5 class="card-title" id="title"><%= movies[i].title%></h5>
               <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= movies[i].original_language + i%>">
@@ -23,18 +27,18 @@
                     </div>
                     <div class="modal-body">
 
-                      <form action="/post/addToJournal" method="POST">
+                      <form action="/post/addToJournal" method="POST" class="needs-validation">
                         <div class="mb-3">
                           <label for="dateWatched" class="col-form-label">Date watched:</label>
-                          <input name="dateWatched" type="date" class="form-control" id="dateWatched">
+                          <input name="dateWatched" type="date" class="form-control" id="dateWatched" required>
                         </div>
                         <div class="mb-3">
                           <label for="rating" class="col-form-label">Rating:</label>
-                          <input name="rating" type="number" class="form-control" id="rating" min="0" max="10"></input>
+                          <input name="rating" type="number" class="form-control" id="rating" min="0" max="10" required></input>
                         </div>
                         <div class="mb-3">
                           <label for="comments" class="col-form-label">Comments:</label>
-                          <textarea name="comments" class="form-control" id="comments"></textarea>
+                          <textarea name="comments" class="form-control" id="comments" required></textarea>
                         </div>
                         
                       </div>

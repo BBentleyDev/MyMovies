@@ -25,13 +25,13 @@
 
 
                 <% } else if (journal[i].rating > 3 && journal[i].rating <= 7) { %>
-                <td style="color: yellowgreen"><%= journal[i].rating%></td>
+                <td style="color: rgb(250, 234, 4)"><%= journal[i].rating%></td>
 
                 <% } else { %>
                 <td style="color: green"><%= journal[i].rating%></td>
                 <% } %>
 
-                <td><%= journal[i].comments%></td>
+                <td class="text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
                 <td>
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Edit Journal Entry
