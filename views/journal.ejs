@@ -2,28 +2,29 @@
   <!-- <div class="container-fluid">
     <div class="row justify-content-evenly mt-5 gy-5"> -->
       <table class="table caption-top">
-        <caption>Watchlist</caption>
+        <caption>Journal</caption>
         <thead>
           <tr>
             <th scope="col">Image</th>
             <th scope="col">Title</th>
-            <th scope="col">Date Added</th>
+            <th scope="col">Date Watched</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Comments</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-              <% for(let i = 0, modal = 'modal'; i < watchlist.length; i++) {%>
+              <% for(let i=0, modal='modal'; i < journal.length; i++) {%>
               <tr>
-                <td><img src="<%= watchlist[i].image%>" alt="movie poster"></td>
-                <td><%= watchlist[i].title%></td>
-                <td><%= watchlist[i].dateAdded%></td>
+                <td><img src="<%= journal[i].image%>" alt="movie poster"></td>
+                <td><%= journal[i].title%></td>
+                <td><%= journal[i].dateWatched%></td>
+                <td><%= journal[i].rating%></td>
+                <td><%= journal[i].comments%></td>
                 <td>
-                  <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
-                    Add to Journal
+                  <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
+                    Edit
                   </a>
-                  <form action="/post/deleteFromWatchList/<%= watchlist[i]._id%>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                  </form>
                 </td>
               </tr>
 
@@ -31,12 +32,12 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel"><%= watchlist[i].title%></h5>
+                      <h5 class="modal-title" id="exampleModalLabel"><%= journal[i].title%></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                      <form action="/post/addToJournal" method="POST">
+                      <form action="/post/editJournal/<%= journal[i]._id%>?_method=PUT" method="POST">
                         <div class="mb-3">
                           <label for="dateWatched" class="col-form-label">Date watched:</label>
                           <input name="dateWatched" type="date" class="form-control" id="dateWatched">
@@ -53,7 +54,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= watchlist[i].movieId%>">Add to Journal</button>
+                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= journal[i].movieId%>">Save Changes</button>
                       </div>
                     </form>
                   </div>

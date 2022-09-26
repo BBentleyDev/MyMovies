@@ -7,9 +7,45 @@
             <img src="https://image.tmdb.org/t/p/w500<%= movies[i].poster_path%>" id="poster" class="card-img-top" alt="movie poster">
             <div class="card-body">
               <h5 class="card-title" id="title"><%= movies[i].title%></h5>
+              <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= movies[i].original_language + i%>">
+                Add to Journal
+              </a>
               <form action="/post/addToWatchList" method="POST">
                 <button type="submit" class="btn btn-primary" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
               </form>
+              
+              <div class="modal fade" id="<%= movies[i].original_language + i%>" tabindex="-1" aria-labelledby="<%= movies[i].original_language + i%>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"><%= movies[i].title%></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="/post/addToJournal" method="POST">
+                        <div class="mb-3">
+                          <label for="dateWatched" class="col-form-label">Date watched:</label>
+                          <input name="dateWatched" type="date" class="form-control" id="dateWatched">
+                        </div>
+                        <div class="mb-3">
+                          <label for="rating" class="col-form-label">Rating:</label>
+                          <input name="rating" type="number" class="form-control" id="rating" min="0" max="10"></input>
+                        </div>
+                        <div class="mb-3">
+                          <label for="comments" class="col-form-label">Comments:</label>
+                          <textarea name="comments" class="form-control" id="comments"></textarea>
+                        </div>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= movies[i].id%>">Add to Journal</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>                            
             </div>
           </div>
         <% } %>
