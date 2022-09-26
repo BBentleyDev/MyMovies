@@ -19,11 +19,22 @@
                 <td><img src="<%= journal[i].image%>" alt="movie poster"></td>
                 <td><%= journal[i].title%></td>
                 <td><%= journal[i].dateWatched%></td>
-                <td><%= journal[i].rating%></td>
+
+                <% if (journal[i].rating <= 3) { %>
+                <td style="color: red"><%= journal[i].rating%></td>
+
+
+                <% } else if (journal[i].rating > 3 && journal[i].rating <= 7) { %>
+                <td style="color: yellowgreen"><%= journal[i].rating%></td>
+
+                <% } else { %>
+                <td style="color: green"><%= journal[i].rating%></td>
+                <% } %>
+
                 <td><%= journal[i].comments%></td>
                 <td>
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
-                    Edit
+                    Edit Journal Entry
                   </a>
                 </td>
               </tr>
