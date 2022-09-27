@@ -1,9 +1,11 @@
 <%- include('partials/header') -%>
   <!-- <div class="container-fluid">
     <div class="row justify-content-evenly mt-5 gy-5"> -->
-      <table class="table caption-top">
-        <caption>Watchlist</caption>
-        <thead>
+      <div class="container text-center my-3">
+        <h1>Your Watchlist</h1>
+      </div>
+      <table class="table">
+        <thead class="table-light">
           <tr>
             <th scope="col">Image</th>
             <th scope="col">Title</th>
@@ -22,7 +24,7 @@
                     Add to Journal
                   </a>
                   <form action="/post/deleteFromWatchList/<%= watchlist[i]._id%>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger mt-2">Delete</button>
                   </form>
                 </td>
               </tr>

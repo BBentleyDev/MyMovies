@@ -1,18 +1,32 @@
 <%- include('partials/header') -%>
 <div class="container-fluid">
-  <div class="row mt-5">
+  <div class="row justify-content-center mt-5">
       <div class="col-6">
-          <div>
+          <div class="container text-center">
               <h1>Welcome <%= user.userName %>!</h1>
           </div>
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center my-5">
           <form class="needs-validation" action="/search" method="POST">
             <label for="search" class="form-label">Search Movies!</label>
             <input type="search" class="form-control" id="search" name="search" placeholder="Enter movie name" required>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
           </form>
         </div>  
       </div>  
+    </div>
+    <div class="container-fluid row justify-content-evenly mt-5">
+      <div class="col-2 text-center">
+        <i class="fas fa-search fa-5x"></i>        
+        <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit itaque id, corporis voluptatem dignissimos facere temporibus molestiae quod explicabo dolor laudantium nulla aut atque voluptatum expedita dicta! Molestias, natus totam.</p>
+      </div>
+      <div class="col-2 text-center">
+        <i class="fas fa-list fa-5x"></i>
+        <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit itaque id, corporis voluptatem dignissimos facere temporibus molestiae quod explicabo dolor laudantium nulla aut atque voluptatum expedita dicta! Molestias, natus totam.</p>
+      </div>
+      <div class="col-2 text-center">
+        <i class="fas fa-book fa-5x"></i>
+        <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit itaque id, corporis voluptatem dignissimos facere temporibus molestiae quod explicabo dolor laudantium nulla aut atque voluptatum expedita dicta! Molestias, natus totam.</p>
+      </div>
     </div>
   </div>
 </div>

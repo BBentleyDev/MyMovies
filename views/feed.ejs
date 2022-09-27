@@ -11,11 +11,11 @@
             <% } %>
             <div class="card-body">
               <h5 class="card-title" id="title"><%= movies[i].title%></h5>
-              <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= movies[i].original_language + i%>">
+              <a  class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#<%= movies[i].original_language + i%>">
                 Add to Journal
               </a>
               <form action="/post/addToWatchList" method="POST">
-                <button type="submit" class="btn btn-primary" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
+                <button type="submit" class="btn btn-primary mt-2" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
               </form>
               
               <div class="modal fade" id="<%= movies[i].original_language + i%>" tabindex="-1" aria-labelledby="<%= movies[i].original_language + i%>Label" aria-hidden="true">
