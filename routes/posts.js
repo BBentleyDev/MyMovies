@@ -9,12 +9,16 @@ router.get("/:id", ensureAuth, postsController.getPost);
 
 router.post("/createPost", upload.single("file"), postsController.createPost);
 
-// router.post("/rateAndReview", postsController.rateAndReview);
+router.post("/addToJournal", postsController.addToJournal);
 
 router.post("/addToWatchList", postsController.addToWatchList);
 
 router.put("/likePost/:id", postsController.likePost);
 
 router.delete("/deletePost/:id", postsController.deletePost);
+
+router.delete("/deleteFromWatchlist/:id", postsController.deleteFromWatchlist);
+
+router.put("/editJournal/:id", postsController.editJournal);
 
 module.exports = router;

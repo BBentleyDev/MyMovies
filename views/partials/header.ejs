@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyMovies</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/imgs/favicon-32x32.png"
-    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/imgs/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -25,9 +25,9 @@
     />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
+  <body class='d-flex flex-column min-vh-100'>
     <header class="container-fluid">
-<nav class="navbar navbar-expand-lg bg-light">
+<!-- <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/profile">MyMovies</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,15 +36,49 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Watched Movies</a>
+          <a class="nav-link active" aria-current="page" href="/journal">Journal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/watchlist">To Watch Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Set Goal</a>
+          <a class="nav-link" href="/watchlist">Watchlist</a>
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <a class="btn btn-primary" href="/logout">Logout</a>
+  </div> 
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/profile">
+      <img src="/imgs/favicon-32x32.png" alt="MyMovies" width="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/profile">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/journal">Journal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/watchlist">Watchlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form> -->
+      <form class="needs-validation d-flex" action="/search" method="POST">
+        <input class="form-control me-2" type="search" id="search" name="search" placeholder="Enter movie name" required>
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ToWatchSchema = new mongoose.Schema({
+const JournalSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -9,14 +9,18 @@ const ToWatchSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  movieId: {
-    type: Number,
-    required: true,
+  dateWatched: {
+    type: String,
+    require: true,
   },
-  dateAdded: {
+  rating: {
+    type: Number,
+    require: true,
+  },
+  comments: {
     type: String,
     require: true,
   },
 });
 
-module.exports = mongoose.model("ToWatch", ToWatchSchema);
+module.exports = mongoose.model("Journal", JournalSchema);

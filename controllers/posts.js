@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const ToWatch = require("../models/toWatch");
+const Journal = require("../models/Journal");
 const Comment = require("../models/Comment");
 const baseUrl = 'https://api.themoviedb.org/3/'
 
@@ -13,10 +14,31 @@ module.exports = {
       const movie = await response.json() 
       await ToWatch.create({
         title: movie.title,
-        image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        image: `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
+        movieId: req.body.movieId,
+        dateAdded: new Date().toLocaleDateString()
       });
       console.log("Movie added to Watch List!");
-      res.redirect("/profile");
+      res.redirect("/watchlist");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  addToJournal: async (req, res) => {
+    console.log(req)
+    try {
+      console.log(req)
+      const response = await fetch(`${baseUrl}movie/${req.body.movieId}?api_key=${process.env.API_KEY}&language=en-US`)
+      const movie = await response.json() 
+      await Journal.create({
+        title: movie.title,
+        image: `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
+        dateWatched: req.body.dateWatched,
+        rating: req.body.rating,
+        comments: req.body.comments,
+      });
+      console.log("Movie added to Journal!");
+      res.redirect("/journal");
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +53,6 @@ module.exports = {
   },
   getMovies: async (req, res) => {
     try {
-      console.log(req.body.search)
       const response = await fetch(`${baseUrl}search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`)
       const movies = await response.json()
       res.render("feed.ejs", { movies: movies.results });
@@ -43,6 +64,14 @@ module.exports = {
     try {
       const watchlist = await ToWatch.find();
       res.render("watchlist.ejs", { watchlist: watchlist });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getJournal: async (req, res) => {
+    try {
+      const journal = await Journal.find();
+      res.render("journal.ejs", { journal: journal });
     } catch (err) {
       console.log(err);
     }
@@ -101,6 +130,32 @@ module.exports = {
       res.redirect("/profile");
     } catch (err) {
       res.redirect("/profile");
+    }
+  },
+  deleteFromWatchlist: async (req, res) => {
+    try {
+      // Delete post from db
+      await ToWatch.remove({ _id: req.params.id });
+      console.log("Deleted from watchlist");
+      res.redirect("/watchlist");
+    } catch (err) {
+      res.redirect("/profile");
+    }
+  },
+  editJournal: async (req, res) => {
+    try {
+      await Journal.findOneAndUpdate({ _id: req.params.id },
+        { $set: {
+          dateWatched: req.body.dateWatched,
+          rating: req.body.rating,
+          comments: req.body.comments,
+          }
+        }
+      );
+      console.log("Changes saved");
+      res.redirect("/journal");
+    } catch (err) {
+      console.log(err);
     }
   },
 };
