@@ -1,6 +1,9 @@
 <%- include('partials/header') -%>
-  <!-- <div class="container-fluid">
-    <div class="row justify-content-evenly mt-5 gy-5"> -->
+
+    <div class="container-fluid bg-image" style="
+    background-image: url('/imgs/background.jpg');
+    height: 100vh;
+    ">
       <div class="container text-center my-3">
         <h1>Your Watchlist</h1>
       </div>
@@ -16,10 +19,10 @@
         <tbody>
               <% for(let i = 0, modal = 'modal'; i < watchlist.length; i++) {%>
               <tr>
-                <td><img src="<%= watchlist[i].image%>" alt="movie poster"></td>
-                <td><%= watchlist[i].title%></td>
-                <td><%= watchlist[i].dateAdded%></td>
-                <td>
+                <td class="align-middle"><img src="<%= watchlist[i].image%>" alt="movie poster"></td>
+                <td class="align-middle"><%= watchlist[i].title%></td>
+                <td class="align-middle"><%= watchlist[i].dateAdded%></td>
+                <td class="align-middle">
                   <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Add to Journal
                   </a>
@@ -62,6 +65,6 @@
               <% } %>
           </tbody>
       </table>
-    <!-- </div>
-  </div>   -->
+    </div>
+
 <%- include('partials/footer') -%>

@@ -1,6 +1,8 @@
 <%- include('partials/header') -%>
-  <!-- <div class="container-fluid">
-    <div class="row justify-content-evenly mt-5 gy-5"> -->
+    <div class="container-fluid bg-image" style="
+    background-image: url('/imgs/background.jpg');
+    height: 100vh;
+    ">
       <div class="container text-center my-3">
         <h1>Your Journal</h1>
       </div>
@@ -18,23 +20,23 @@
         <tbody>
               <% for(let i=0, modal='modal'; i < journal.length; i++) {%>
               <tr>
-                <td><img src="<%= journal[i].image%>" alt="movie poster"></td>
-                <td><%= journal[i].title%></td>
-                <td><%= journal[i].dateWatched%></td>
+                <td class="align-middle"><img src="<%= journal[i].image%>" alt="movie poster"></td>
+                <td class="align-middle"><%= journal[i].title%></td>
+                <td class="align-middle"><%= journal[i].dateWatched%></td>
 
                 <% if (journal[i].rating <= 3) { %>
-                <td style="color: red"><%= journal[i].rating%></td>
+                <td class="align-middle" style="color: red"><%= journal[i].rating%></td>
 
 
                 <% } else if (journal[i].rating > 3 && journal[i].rating <= 7) { %>
-                <td style="color: rgb(250, 234, 4)"><%= journal[i].rating%></td>
+                <td class="align-middle" style="color: rgb(250, 234, 4)"><%= journal[i].rating%></td>
 
                 <% } else { %>
-                <td style="color: green"><%= journal[i].rating%></td>
+                <td class="align-middle" style="color: green"><%= journal[i].rating%></td>
                 <% } %>
 
-                <td class="text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
-                <td>
+                <td class="align-middle text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
+                <td class="align-middle">
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Edit Journal Entry
                   </a>
@@ -76,6 +78,6 @@
               <% } %>
           </tbody>
       </table>
-    <!-- </div>
-  </div>   -->
+    </div>
+
 <%- include('partials/footer') -%>
