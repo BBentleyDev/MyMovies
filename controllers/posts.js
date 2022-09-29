@@ -45,8 +45,10 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const response = await fetch(`${baseUrl}trending/movie/week?api_key=${process.env.API_KEY}`)
+      const trending = await response.json()
+      console.log(trending)
+      res.render("profile.ejs", { trending: trending.results, user: req.user });
     } catch (err) {
       console.log(err);
     }
