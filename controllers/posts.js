@@ -2,7 +2,6 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const ToWatch = require("../models/toWatch");
 const Journal = require("../models/Journal");
-const Comment = require("../models/Comment");
 const baseUrl = 'https://api.themoviedb.org/3/'
 
 
@@ -58,6 +57,16 @@ module.exports = {
       const response = await fetch(`${baseUrl}search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`)
       const movies = await response.json()
       res.render("feed.ejs", { movies: movies.results });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getDetails: async (req, res) => {
+    try {
+      const response = await fetch(`${baseUrl}movie/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`)
+      const movie = await response.json()
+      console.log(movie)
+      res.render("details.ejs", { movie: movie });
     } catch (err) {
       console.log(err);
     }

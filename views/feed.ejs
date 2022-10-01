@@ -5,9 +5,13 @@
           
           <div class="card text-center" style="width: 18rem;">
             <% if (!movies[i].poster_path) { %>
-            <img src="/imgs/noPoster.jpg" id="poster" class="card-img-top" alt="movie poster">
+            <a href="/post/details/<%= movies[i].id%>">
+              <img src="/imgs/noPoster.jpg" id="poster" class="card-img-top" alt="movie poster">
+            </a>
             <%} else { %>
-            <img src="https://image.tmdb.org/t/p/w500<%= movies[i].poster_path%>" id="poster" class="card-img-top" alt="movie poster">
+            <a href="/post/details/<%= movies[i].id%>">
+              <img src="https://image.tmdb.org/t/p/w500<%= movies[i].poster_path%>" id="poster" class="card-img-top" alt="movie poster">
+            </a>
             <% } %>
             <div class="card-body">
               <h5 class="card-title" id="title"><%= movies[i].title%></h5>
@@ -34,7 +38,18 @@
                         </div>
                         <div class="mb-3">
                           <label for="rating" class="col-form-label">Rating:</label>
-                          <input name="rating" type="number" class="form-control" id="rating" min="0" max="10" required></input>
+                          <select name="rating" class="form-control" id="rating" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">5</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
                         </div>
                         <div class="mb-3">
                           <label for="comments" class="col-form-label">Comments:</label>
