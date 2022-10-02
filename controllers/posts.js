@@ -31,6 +31,7 @@ module.exports = {
       const movie = await response.json() 
       await Journal.create({
         title: movie.title,
+        movieId: req.body.movieId,
         image: `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
         dateWatched: req.body.dateWatched,
         rating: req.body.rating,

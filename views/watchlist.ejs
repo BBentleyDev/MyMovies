@@ -1,9 +1,6 @@
 <%- include('partials/header') -%>
 
-    <div class="container-fluid bg-image" style="
-    background-image: url('/imgs/background.jpg');
-    height: 100vh;
-    ">
+    <div class="container-fluid">
       <div class="container text-center my-3">
         <h1>Your Watchlist</h1>
       </div>
@@ -19,7 +16,7 @@
         <tbody>
               <% for(let i = 0, modal = 'modal'; i < watchlist.length; i++) {%>
               <tr>
-                <td class="align-middle"><img src="<%= watchlist[i].image%>" alt="movie poster"></td>
+                <td class="align-middle"><a href="/post/details/<%= watchlist[i].movieId%>"><img src="<%= watchlist[i].image%>" alt="movie poster"></a></td>
                 <td class="align-middle"><%= watchlist[i].title%></td>
                 <td class="align-middle"><%= watchlist[i].dateAdded%></td>
                 <td class="align-middle">

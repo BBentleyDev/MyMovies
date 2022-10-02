@@ -1,8 +1,5 @@
 <%- include('partials/header') -%>
-    <div class="container-fluid bg-image" style="
-    background-image: url('/imgs/background.jpg');
-    height: 100vh;
-    ">
+    <div class="container-fluid">
       <div class="container text-center my-3">
         <h1>Your Journal</h1>
       </div>
@@ -20,7 +17,7 @@
         <tbody>
               <% for(let i=0, modal='modal'; i < journal.length; i++) {%>
               <tr>
-                <td class="align-middle"><img src="<%= journal[i].image%>" alt="movie poster"></td>
+                <td class="align-middle"><a href="/post/details/<%= journal[i].movieId%>"><img src="<%= journal[i].image%>" alt="movie poster"></a></td>
                 <td class="align-middle"><%= journal[i].title%></td>
                 <td class="align-middle"><%= journal[i].dateWatched%></td>
 
@@ -90,5 +87,13 @@
           </tbody>
       </table>
     </div>
+
+
+    <!-- If needed, to add background image -->
+
+    <!-- <div class="container-fluid bg-image" style="
+    background-image: url('/imgs/background.jpg');
+    height: 100vh;
+    "> -->
 
 <%- include('partials/footer') -%>

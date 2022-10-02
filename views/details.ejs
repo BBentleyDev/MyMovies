@@ -1,10 +1,71 @@
-<div class="container-fluid text-center">
-    <div class="row">
-      <div class="col">
-        Column
-      </div>
-      <div class="col">
-        Column
-      </div>
+<%- include('partials/header') -%>
+<div class="d-flex align-items-center container flex-grow-1">
+  <div class="row">
+    <div class="col text-center align-items-center mb-5">
+      <img src="https://image.tmdb.org/t/p/w300<%= movie.poster_path%>" alt="">
+    </div>
+    <div class="col">
+      <h1 class="mb-5"><%= movie.title%></h3>
+      <p><strong>Overview: </strong><%= movie.overview%></p>
+      <span class="d-block mb-3"> <strong>Genres: </strong>
+        <% for(let i=0; i < movie.genres.length; i++) {%>
+          <%= movie.genres[i].name%> 
+        <% } %>
+      </span>
+      <span class="d-block mb-3"><strong>Release Date: </strong><%= movie.release_date%></span>
+      <span class="d-block mb-3"><strong>Average rating: </strong><%= movie.vote_average%></span>
+      <span class="d-block mb-3"><strong>Runtime: </strong><%= movie.runtime%> minutes</span>
+      <span><a  class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modal">
+        Add to Journal
+      </a></span>
+      <form class="d-inline" action="/post/addToWatchList" method="POST">
+        <button type="submit" class="btn btn-primary mt-2" name='movieId' value="<%= movie.id%>">Add to Watch List</button>
+      </form>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= movie.title%></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="/post/addToJournal" method="POST" class="needs-validation">
+          <div class="mb-3">
+            <label for="dateWatched" class="col-form-label">Date watched:</label>
+            <input name="dateWatched" type="date" class="form-control" id="dateWatched" required>
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="col-form-label">Rating:</label>
+            <select name="rating" class="form-control" id="rating" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">5</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="col-form-label">Comments:</label>
+            <textarea name="comments" class="form-control" id="comments" required></textarea>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" name='movieId' value="<%= movie.id%>">Add to Journal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
