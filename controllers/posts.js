@@ -53,6 +53,9 @@ module.exports = {
       console.log(err);
     }
   },
+  getCreateList: (req, res) => {
+      res.render("createlist.ejs", { user: req.user });
+  },
   getMovies: async (req, res) => {
     try {
       const response = await fetch(`${baseUrl}search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`)

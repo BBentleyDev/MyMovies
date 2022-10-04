@@ -1,0 +1,57 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+      <div class="col-10 col-lg-6">
+          <div class="mt-2">
+            <h1 class="mb-4 pb-2 border-bottom">Create a list</h1>
+            <form action="/createlist" method="POST">
+              <div class="mb-3">
+                  <strong><label for="title" class="form-label">List Title</label></strong>
+                  <input type="text" class="form-control" id="title" name="title" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#1</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#2</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#3</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#4</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#6</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#7</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#8</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#9</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">#10</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              
+              
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div> 
+    </div>
+</div>
+<%- include('partials/footer') -%>
