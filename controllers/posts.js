@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const ToWatch = require("../models/toWatch");
 const Journal = require("../models/Journal");
+const List = require("../models/List");
 const baseUrl = 'https://api.themoviedb.org/3/'
 
 
@@ -45,10 +46,14 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
-      const response = await fetch(`${baseUrl}trending/movie/week?api_key=${process.env.API_KEY}`)
-      const trending = await response.json()
-      console.log(trending)
-      res.render("profile.ejs", { trending: trending.results, user: req.user });
+      console.log(req.user.id)
+      // const response = await fetch(`${baseUrl}trending/movie/week?api_key=${process.env.API_KEY}`)
+      const lists = await List.find()
+      console.log(lists[0].user)
+      console.log(lists)
+      // const trending = await response.json()
+      // console.log(trending)
+      res.render("profile.ejs", { user: req.user, lists: lists });
     } catch (err) {
       console.log(err);
     }
@@ -114,6 +119,21 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
+      res.redirect("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createList: async (req, res) => {
+    try {
+      console.log(req.body)
+      await List.create({
+        title: req.body.title,
+        movies: [...req.body.movies],
+        likes: 0,
+        user: req.user.id,
+      });
+      console.log("List has been created!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);

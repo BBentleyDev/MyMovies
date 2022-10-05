@@ -8,8 +8,6 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/details/:id", ensureAuth, postsController.getDetails);
 
-router.post("/createPost", upload.single("file"), postsController.createPost);
-
 router.post("/addToJournal", postsController.addToJournal);
 
 router.post("/addToWatchList", postsController.addToWatchList);

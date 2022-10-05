@@ -52,11 +52,11 @@
                       <form action="/post/editJournal/<%= journal[i]._id%>?_method=PUT" method="POST">
                         <div class="mb-3">
                           <label for="dateWatched" class="col-form-label">Date watched:</label>
-                          <input name="dateWatched" type="date" class="form-control" id="dateWatched">
+                          <input name="dateWatched" type="date" class="form-control" id="dateWatched" value="<%= journal[i].dateWatched%>">
                         </div>
                         <div class="mb-3">
                           <label for="rating" class="col-form-label">Rating:</label>
-                          <select name="rating" class="form-control" id="rating" required>
+                          <select name="rating" class="form-control" id="rating" value="<%= journal[i].rating%>>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="mb-3">
                           <label for="comments" class="col-form-label">Comments:</label>
-                          <textarea name="comments" class="form-control" id="comments"></textarea>
+                          <textarea name="comments" class="form-control" id="comments"><%= journal[i].comments%></textarea>
                         </div>
                         
                       </div>
