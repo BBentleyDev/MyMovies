@@ -1,3 +1,47 @@
+<img src='https://user-images.githubusercontent.com/99290888/191861132-f2fb0b08-2bba-49cc-a425-7c6e9b0d95ec.png'></img>
+
+
+
+# Introduction
+
+This is MyMovies. A movie-journal app which allows users to make lists keeping track of their favourite films while sharing them with other users.
+
+---
+
+# Objectives
+
+To build a full stack tracking-type web application with user logins, authentication and the ability to have unique profiles. I wanted this app to be a place where fellow movie buffs could track their movies and share their favourite with others.
+
+---
+
+# Who is this for? 
+
+Film enthusiasts looking for a convenient way to keep track of their movie habits
+
+---
+
+# Optimizations 
+
+  These are some of the optimizations I am in the midst of implementing into my project given the time.
+  
+- Add Google Auth (on top of Passport which is currently functional)
+- General optimizations for progressive rendering
+- Add more responsiveness for mobile devices/tablets/smaller screens
+
+---
+
+# Tech used 
+
+JavaScript, MongoDB, Express, Node, CSS, EJS, Passport, Bootstrap5
+
+---
+
+# Packages/Dependencies used 
+
+bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator, bootstrap
+
+---
+
 # Install
 
 `npm install`
