@@ -46,11 +46,8 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
-      console.log(req.user.id)
       // const response = await fetch(`${baseUrl}trending/movie/week?api_key=${process.env.API_KEY}`)
       const lists = await List.find()
-      console.log(lists[0].user)
-      console.log(lists)
       // const trending = await response.json()
       // console.log(trending)
       res.render("profile.ejs", { user: req.user, lists: lists });
@@ -101,6 +98,15 @@ module.exports = {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
       res.render("post.ejs", { post: post, user: req.user, comments: comments });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getCustomList: async (req, res) => {
+    try {
+      const list = await List.findById(req.params.id);
+      // const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
+      res.render("customlist.ejs", { list: list, user: req.user});
     } catch (err) {
       console.log(err);
     }

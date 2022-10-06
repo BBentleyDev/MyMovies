@@ -24,26 +24,30 @@ height: 100vh;
         <h2 class="border-bottom pb-2">Your Lists</h2>
 
         <% let userLists = lists.filter(list => list.user == user.id) %>
-        <% if (!userLists) { %>
-          <span class="d-block my-5">Click below to create your first list!</span>
-          <span class="d-block my-5"><a href="/createList"><i class="fas fa-plus-circle fa-5x"></i></a></span>
-        <% } %>
 
-        <% for(let i=0; i < lists.length; i++) {%>
-            <span class="d-block my-3"><%= userLists[i].title %> Likes: <%= userLists[i].likes %></span>
+        <% if (userLists) { %>
+          <div class="list-group">
+            <% for (let i = 0; i < userLists.length; i++) { %>
+              <a href="post/customList/<%= userLists[i].id %>" class="list-group-item list-group-item-action"><%= userLists[i].title %>  Likes: <%= userLists[i].likes %></a>        
+            <% } %>
+          </div>
+        <% } else {%>
+              <span class="d-block my-5">Click below to create your first list!</span>
+              <span class="d-block my-5"><a href="/createList"><i class="fas fa-plus-circle fa-5x"></i></a></span>
         <% } %>  
 
       </div>
       <div class="col-md-5">
         <h2 class="border-bottom pb-2">Top Community Lists</h2>
 
-        <% if (!lists) { %>
-          <span class="d-block my-5">Click below to create your first goal!</span>
-          <span class="d-block my-5"><a href="#"><i class="fas fa-plus-circle fa-5x"></i></a></span>
-        <% } %>
-
-        <% for(let i=0; i < lists.length; i++) {%>
-            <span class="d-block my-3"><%= lists[i].title %> Likes: <%= lists[i].likes %></span>
+        <% if (lists) { %>
+          <div class="list-group"> 
+            <% for (let i = 0; i < lists.length; i++) { %> 
+              <a href="post/customList/<%= lists[i].id %>" class="list-group-item list-group-item-action"><%= lists[i].title %>  Likes: <%= lists[i].likes %></a>
+            <% } %>
+          </div>
+        <% } else { %>
+            <span class="d-block my-5">No Community Lists to Display!</span>
         <% } %> 
 
       </div>

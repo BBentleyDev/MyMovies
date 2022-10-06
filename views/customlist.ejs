@@ -1,0 +1,24 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+      <div class="col-10 col-lg-6">
+          <div class="mt-2">
+            <h1 class="mb-4 pb-2 border-bottom"><%= list.title %></h1>
+            
+            <ol>
+                <% for (let i = 0; i < list.movies.length; i++) { %>
+                    <li><%= list.movies[i] %></li>
+                <% } %>   
+            </ol>
+
+            <div>        
+                <label for="comment" class="form-label">Comment: </label>
+                <input type="textarea" class="form-control" id="comment" name="comment">
+                <button type="submit" class="btn btn-primary mt-2">Submit</button></div>
+            <div>For each existing comment</div>
+
+          </div>
+      </div> 
+    </div>
+</div>
+<%- include('partials/footer') -%>

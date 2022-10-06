@@ -8,6 +8,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get("/details/:id", ensureAuth, postsController.getDetails);
 
+router.get("/customlist/:id", ensureAuth, postsController.getCustomList);
+
 router.post("/addToJournal", postsController.addToJournal);
 
 router.post("/addToWatchList", postsController.addToWatchList);
