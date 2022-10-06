@@ -1,4 +1,4 @@
-<img src='https://user-images.githubusercontent.com/99290888/191861132-f2fb0b08-2bba-49cc-a425-7c6e9b0d95ec.png'></img>
+<img src='public/imgs/banner.png'></img>
 
 
 
