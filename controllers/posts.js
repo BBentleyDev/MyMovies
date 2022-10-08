@@ -47,7 +47,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       // const response = await fetch(`${baseUrl}trending/movie/week?api_key=${process.env.API_KEY}`)
-      const lists = await List.find()
+      const lists = await List.find().sort({ likes: "desc" })
       // const trending = await response.json()
       // console.log(trending)
       res.render("profile.ejs", { user: req.user, lists: lists });
@@ -138,6 +138,7 @@ module.exports = {
         movies: [...req.body.movies],
         likes: 0,
         user: req.user.id,
+        userName: req.user.userName,
       });
       console.log("List has been created!");
       res.redirect("/profile");

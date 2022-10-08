@@ -3,7 +3,13 @@
   <div class="row mt-5 justify-content-center">
       <div class="col-10 col-lg-6">
           <div class="mt-2">
-            <h1 class="mb-4 pb-2 border-bottom"><%= list.title %></h1>
+            <div class="mb-4 pb-2 border-bottom">
+                <h1><%= list.title %></h1>
+                <span class="fst-italic">by <%= list.userName %></span>
+                <form action="/list/likeList/<%= list.id %>?_method=PUT" method="POST"">
+                    <button style="float: right" class="badge rounded-pill bg-primary" type="submit"><i class="far fa-thumbs-up"></i> <%= list.likes %></button>
+                </form>
+            </div>
             
             <ol>
                 <% for (let i = 0; i < list.movies.length; i++) { %>
@@ -11,14 +17,15 @@
                 <% } %>   
             </ol>
 
-            <div>        
+            <form action="/comment/createComment/<%= list._id %>" method="POST"">
                 <label for="comment" class="form-label">Comment: </label>
                 <input type="textarea" class="form-control" id="comment" name="comment">
                 <button type="submit" class="btn btn-primary mt-2">Submit</button></div>
+            </form>        
+            
             <div>For each existing comment</div>
 
-          </div>
-      </div> 
-    </div>
+        </div>
+    </div> 
 </div>
 <%- include('partials/footer') -%>
