@@ -37,6 +37,9 @@
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Edit Journal Entry
                   </a>
+                  <form action="/post/deleteFromJournal/<%= journal[i]._id%>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                  </form>
                 </td>
               </tr>
 

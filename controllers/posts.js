@@ -183,6 +183,16 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  deleteFromJournal: async (req, res) => {
+    try {
+      // Delete post from db
+      await Journal.remove({ _id: req.params.id });
+      console.log("Deleted from journal");
+      res.redirect("/journal");
+    } catch (err) {
+      res.redirect("/profile");
+    }
+  },
   editJournal: async (req, res) => {
     try {
       await Journal.findOneAndUpdate({ _id: req.params.id },

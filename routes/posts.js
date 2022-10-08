@@ -20,6 +20,8 @@ router.delete("/deletePost/:id", postsController.deletePost);
 
 router.delete("/deleteFromWatchlist/:id", postsController.deleteFromWatchlist);
 
+router.delete("/deleteFromJournal/:id", postsController.deleteFromJournal);
+
 router.put("/editJournal/:id", postsController.editJournal);
 
 module.exports = router;
