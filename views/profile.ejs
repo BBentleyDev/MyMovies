@@ -23,13 +23,12 @@ height: 100vh;
       <div class="col-md-5 mb-5">
         <% let userLists = lists.filter(list => list.user == user.id) %>
         <h2 class="border-bottom pb-2">Your Lists
-          <% if (userLists) { %>
+          <% if (!userLists.length) { %>
               <span><a href="/createList"><i class="fas fa-plus-circle"></i></a></span>
-            <% } %>
-
+          <% } %>
         </h2>
 
-        <% if (userLists) { %>
+        <% if (userLists.length) { %>
           <div class="list-group">
             <% for (let i = 0; i < userLists.length; i++) { %>
               <a href="post/customList/<%= userLists[i].id %>" class="list-group-item list-group-item-action"><%= userLists[i].title %>  Likes: <%= userLists[i].likes %></a>        
@@ -44,7 +43,7 @@ height: 100vh;
       <div class="col-md-5">
         <h2 class="border-bottom pb-2">Top Community Lists</h2>
 
-        <% if (lists) { %>
+        <% if (lists.length) { %>
           <div class="list-group"> 
             <% for (let i = 0; i < lists.length; i++) { %> 
               <a href="post/customList/<%= lists[i].id %>" class="list-group-item list-group-item-action"><%= lists[i].title %>  Likes: <%= lists[i].likes %></a>

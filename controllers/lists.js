@@ -20,4 +20,13 @@ module.exports = {
           console.log(err);
         }
       },
+      deleteList: async (req, res) => {
+        try {
+          await List.remove({ _id: req.params.id });
+          console.log("Custom list deleted");
+          res.redirect("/profile");
+        } catch (err) {
+          res.redirect("/profile");
+        }
+      },
 };

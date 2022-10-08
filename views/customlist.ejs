@@ -6,9 +6,15 @@
             <div class="mb-4 pb-2 border-bottom">
                 <h1><%= list.title %></h1>
                 <span class="fst-italic">by <%= list.userName %></span>
-                <form action="/list/likeList/<%= list.id %>?_method=PUT" method="POST"">
+                <% if (list.user == user.id) { %>
+                    <form class="d-inline" action="/list/deleteList/<%= list.id %>?_method=DELETE" method="POST">
+                        <button style="float: right" class="badge rounded-pill bg-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
+                    </form> 
+                <% } else { %>
+                <form class="d-inline" action="/list/likeList/<%= list.id %>?_method=PUT" method="POST"">
                     <button style="float: right" class="badge rounded-pill bg-primary" type="submit"><i class="far fa-thumbs-up"></i> <%= list.likes %></button>
                 </form>
+                <% } %>
             </div>
             
             <ol>
@@ -17,11 +23,13 @@
                 <% } %>   
             </ol>
 
-            <form action="/comment/createComment/<%= list._id %>" method="POST"">
-                <label for="comment" class="form-label">Comment: </label>
-                <input type="textarea" class="form-control" id="comment" name="comment">
-                <button type="submit" class="btn btn-primary mt-2">Submit</button></div>
-            </form>        
+            <% if (list.user != user.id) { %>
+                <form class="mt-4 pt-2 border-top" action="/comment/createComment/<%= list._id %>" method="POST"">
+                    <label for="comment" class="form-label">Leave a comment: </label>
+                    <input type="textarea" class="form-control" id="comment" name="comment">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button></div>
+                </form>
+            <% } %>        
             
             <div>For each existing comment</div>
 
