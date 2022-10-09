@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container">
+<main class="container">
   <div class="row mt-5 justify-content-center">
       <div class="col-10 col-lg-6">
           <div class="mt-2">
@@ -7,8 +7,9 @@
                 <h1><%= list.title %></h1>
                 <span class="fst-italic">by <%= list.userName %></span>
                 <% if (list.user == user.id) { %>
-                    <form class="d-inline" action="/list/deleteList/<%= list.id %>?_method=DELETE" method="POST">
-                        <button style="float: right" class="badge rounded-pill bg-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
+                  <button class="disabled d-inline badge rounded-pill bg-primary" type="submit" style="float: right"><i class="far fa-thumbs-up" disabled></i> <%= list.likes %></button>
+                  <form class="d-inline" action="/list/deleteList/<%= list.id %>?_method=DELETE" method="POST">
+                      <button style="float: right" class="badge rounded-pill bg-danger" type="submit"><i class="fas fa-trash-alt"></i></i></button>
                     </form> 
                 <% } else { %>
                 <form class="d-inline" action="/list/likeList/<%= list.id %>?_method=PUT" method="POST"">
@@ -17,23 +18,60 @@
                 <% } %>
             </div>
             
-            <ol>
+            <ol class="border-bottom pb-4">
                 <% for (let i = 0; i < list.movies.length; i++) { %>
                     <li><%= list.movies[i] %></li>
                 <% } %>   
             </ol>
 
-            <% if (list.user != user.id) { %>
+            <!-- <% if (list.user != user.id) { %>
                 <form class="mt-4 pt-2 border-top" action="/comment/createComment/<%= list._id %>" method="POST"">
                     <label for="comment" class="form-label">Leave a comment: </label>
                     <input type="textarea" class="form-control" id="comment" name="comment">
                     <button type="submit" class="btn btn-primary mt-2">Submit</button></div>
                 </form>
-            <% } %>        
-            
-            <div>For each existing comment</div>
-
+            <% } %>         -->
         </div>
-    </div> 
-</div>
+    </div>
+    
+    <div class="row d-flex justify-content-center mb-4">
+        <div class="col-md-10 col-lg-8">
+          <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+            <div class="card-body p-4">
+            <% if (list.user != user.id) { %>
+              <form class="form-outline mb-4" action="/comment/createComment/<%= list.id %>" method="POST">
+                <label class="form-label" for="addANote">+ Add a comment</label>
+                <input name="comment" type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+              </form>
+            <% } %>
+
+            <% if (comments.length) { %>
+              <% for (let i = 0; i < comments.length; i++) { %>
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <p><%= comments[i].comment %></p>
+                  
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                          height="25" />
+                        <p class="small mb-0 ms-2"><%= comments[i].createdBy %></p>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <p class="small text-muted mb-0"><%= comments[i].createdAt %></p>
+                        <!-- <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                        <p class="small text-muted mb-0">3</p> -->
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <% } %>
+            <% } else { %>
+              <p class="text-center">No Comments to display!</p>
+            <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+</main>
 <%- include('partials/footer') -%>

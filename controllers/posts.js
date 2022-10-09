@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const ToWatch = require("../models/toWatch");
 const Journal = require("../models/Journal");
+const Comment = require("../models/Comment");
 const List = require("../models/List");
 const baseUrl = 'https://api.themoviedb.org/3/'
 
@@ -79,7 +80,7 @@ module.exports = {
   },
   getWatchlist: async (req, res) => {
     try {
-      const watchlist = await ToWatch.find();
+      const watchlist = await ToWatch.find().sort({ dateAdded: "desc" });
       res.render("watchlist.ejs", { watchlist: watchlist });
     } catch (err) {
       console.log(err);
@@ -87,7 +88,7 @@ module.exports = {
   },
   getJournal: async (req, res) => {
     try {
-      const journal = await Journal.find();
+      const journal = await Journal.find().sort({ dateWatched: "desc" });
       res.render("journal.ejs", { journal: journal });
     } catch (err) {
       console.log(err);
@@ -105,8 +106,9 @@ module.exports = {
   getCustomList: async (req, res) => {
     try {
       const list = await List.findById(req.params.id);
-      // const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("customlist.ejs", { list: list, user: req.user});
+      const comments = await Comment.find({list: req.params.id}).sort({ createdAt: "asc" });
+      console.log(comments)
+      res.render("customlist.ejs", { list: list, user: req.user, comments: comments });
     } catch (err) {
       console.log(err);
     }

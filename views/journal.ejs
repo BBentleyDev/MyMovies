@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-    <div class="container-fluid">
+    <main class="container-fluid">
       <div class="container text-center my-4">
         <h1>Your Journal</h1>
       </div>
@@ -59,17 +59,13 @@
                         </div>
                         <div class="mb-3">
                           <label for="rating" class="col-form-label">Rating:</label>
-                          <select name="rating" class="form-control" id="rating" value="<%= journal[i].rating%>>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">5</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                          <select name="rating" class="form-control" id="rating">
+                            <% for (let i = 1; i <= 10; i++) { %>
+                              <% if (i == <%= journal[i].rating%>) { %>
+                                <option value="<%= journal[i].rating%>" selected> <%= journal[i].rating%> </option>
+                            <% } else { %>
+                                <option value="<%= journal[i].rating%>"> <%= journal[i].rating%> </option>
+                            <% } %>
                           </select>
                         </div>
                         <div class="mb-3">
@@ -89,7 +85,7 @@
               <% } %>
           </tbody>
       </table>
-    </div>
+    </main>
 
 
     <!-- If needed, to add background image -->

@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<div class="container-fluid bg-image" style="
+<main class="container-fluid bg-image" style="
 background-image: url('/imgs/background.jpg');
 height: 100vh;
 ">
@@ -23,7 +23,7 @@ height: 100vh;
       <div class="col-md-5 mb-5">
         <% let userLists = lists.filter(list => list.user == user.id) %>
         <h2 class="border-bottom pb-2">Your Lists
-          <% if (!userLists.length) { %>
+          <% if (userLists.length) { %>
               <span><a href="/createList"><i class="fas fa-plus-circle"></i></a></span>
           <% } %>
         </h2>
@@ -31,7 +31,14 @@ height: 100vh;
         <% if (userLists.length) { %>
           <div class="list-group">
             <% for (let i = 0; i < userLists.length; i++) { %>
-              <a href="post/customList/<%= userLists[i].id %>" class="list-group-item list-group-item-action"><%= userLists[i].title %>  Likes: <%= userLists[i].likes %></a>        
+              <a href="post/customList/<%= userLists[i].id %>" class="list-group-item d-flex list-group-item-action justify-content-around">
+                <div class="col">
+                  <span><strong><%= userLists[i].title %></strong></span>
+                </div>
+                <div class="col">
+                  <span>Likes: <%= userLists[i].likes %></span>
+                </div>
+              </a>        
             <% } %>
           </div>
         <% } else {%>
@@ -46,7 +53,14 @@ height: 100vh;
         <% if (lists.length) { %>
           <div class="list-group"> 
             <% for (let i = 0; i < lists.length; i++) { %> 
-              <a href="post/customList/<%= lists[i].id %>" class="list-group-item list-group-item-action"><%= lists[i].title %>  Likes: <%= lists[i].likes %></a>
+              <a href="post/customList/<%= lists[i].id %>" class="list-group-item d-flex list-group-item-action justify-content-around">
+                <div class="col">
+                  <span><strong><%= lists[i].title %></strong></span>  
+                </div>
+                <div class="col">
+                  <span>Likes: <%= lists[i].likes %></span>
+                </div>
+              </a>
             <% } %>
           </div>
         <% } else { %>
@@ -56,5 +70,5 @@ height: 100vh;
       </div>
     </div>
   </div>
-</div>
+</main>
 <%- include('partials/footer') -%>
