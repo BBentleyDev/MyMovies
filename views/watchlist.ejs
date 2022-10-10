@@ -1,12 +1,15 @@
 <%- include('partials/header') -%>
 
-    <main class="container-fluid">
+<main class="container-fluid" style="
+background-color: whitesmoke; 
+height: 100;
+">
       <div class="container text-center my-4">
         <h1>Your Watchlist</h1>
       </div>
       <table class="table table-striped table-sm">
         <thead class="table-light">
-          <tr>
+          <tr class="text-center">
             <th scope="col">Poster</th>
             <th scope="col">Title</th>
             <th scope="col">Date Added</th>
@@ -15,7 +18,7 @@
         </thead>
         <tbody>
               <% for(let i = 0, modal = 'modal'; i < watchlist.length; i++) {%>
-              <tr>
+              <tr class="text-center">
                 <td class="align-middle"><a href="/post/details/<%= watchlist[i].movieId%>"><img src="<%= watchlist[i].image%>" alt="movie poster"></a></td>
                 <td class="align-middle"><%= watchlist[i].title%></td>
                 <td class="align-middle"><%= watchlist[i].dateAdded%></td>

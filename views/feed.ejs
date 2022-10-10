@@ -1,5 +1,8 @@
 <%- include('partials/header') -%>
-  <main class="container-fluid">
+<main class="container-fluid" style="
+background-color: whitesmoke; 
+height: 100;"
+>
     <div class="row justify-content-evenly mt-5 gy-5">
         <% for(let i=0; i < movies.length; i++) {%>
           
@@ -19,7 +22,7 @@
                 Add to Journal
               </a>
               <form action="/post/addToWatchList" method="POST">
-                <button type="submit" class="btn btn-primary mt-2" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
+                <button type="submit" class="btn btn-secondary mt-2" name='movieId' value="<%= movies[i].id%>">Add to Watch List</button>
               </form>
               
               <div class="modal fade" id="<%= movies[i].original_language + i%>" tabindex="-1" aria-labelledby="<%= movies[i].original_language + i%>Label" aria-hidden="true">

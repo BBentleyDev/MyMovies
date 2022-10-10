@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 <main class="container-fluid bg-image" style="
-background-image: url('/imgs/background.jpg');
+background-color: whitesmoke; 
 height: 100vh;
 ">
   <div class="row justify-content-center my-4">
@@ -36,7 +36,7 @@ height: 100vh;
                   <span><strong><%= userLists[i].title %></strong></span>
                 </div>
                 <div class="col">
-                  <span>Likes: <%= userLists[i].likes %></span>
+                  <button class="disabled badge rounded-pill bg-primary" type="submit"><i class="far fa-thumbs-up" disabled></i> <%= userLists[i].likes %></button>
                 </div>
               </a>        
             <% } %>
@@ -58,7 +58,7 @@ height: 100vh;
                   <span><strong><%= lists[i].title %></strong></span>  
                 </div>
                 <div class="col">
-                  <span>Likes: <%= lists[i].likes %></span>
+                  <button class="disabled badge rounded-pill bg-primary" type="submit"><i class="far fa-thumbs-up" disabled></i> <%= lists[i].likes %></button>
                 </div>
               </a>
             <% } %>
