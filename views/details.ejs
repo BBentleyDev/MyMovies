@@ -15,9 +15,9 @@
       <span class="d-block mb-3"><strong>Release Date: </strong><%= movie.release_date%></span>
       <span class="d-block mb-3"><strong>Average rating: </strong><%= movie.vote_average%></span>
       <span class="d-block mb-3"><strong>Runtime: </strong><%= movie.runtime%> minutes</span>
-      <span><a  class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modal">
+      <a  class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#modal">
         Add to Journal
-      </a></span>
+      </a>
       <form class="d-inline" action="/post/addToWatchList" method="POST">
         <button type="submit" class="btn btn-secondary mt-2" name='movieId' value="<%= movie.id%>">Add to Watch List</button>
       </form>

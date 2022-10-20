@@ -70,10 +70,20 @@ module.exports = {
   },
   getDetails: async (req, res) => {
     try {
+
+      //needs fixing
+      let watchlistTitles = []
+      let journalTitles = []
+
+      const watchlist = await ToWatch.find();
+      const journal = await Journal.find();
+
+      watchlist.forEach( movie => watchlistTitles.push(movie.title))
+      journal.forEach( movie => journalTitles.push(movie.title))
+
       const response = await fetch(`${baseUrl}movie/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`)
       const movie = await response.json()
-      console.log(movie)
-      res.render("details.ejs", { movie: movie });
+      res.render("details.ejs", { movie: movie, journalTitles: journalTitles, watchlistTitles: watchlistTitles});
     } catch (err) {
       console.log(err);
     }
