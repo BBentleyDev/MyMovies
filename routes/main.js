@@ -6,7 +6,7 @@ const postsController = require("../controllers/posts");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Main Routes - simplified for now
-router.get("/", homeController.getIndex);
+router.get("/index", homeController.getIndex);
 router.get("/watchlist", ensureAuth, postsController.getWatchlist);
 router.get("/createList", ensureAuth, postsController.getCreateList);
 router.post("/createList", ensureAuth, postsController.createList);
