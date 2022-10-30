@@ -71,7 +71,7 @@ module.exports = {
   getDetails: async (req, res) => {
     try {
 
-      //needs fixing
+      //needs fixing for conditional buttons, maybe create title arrays on client side, as the full watchlist/journal objects need to be passed so id is accesible for delete operation to work
       let watchlistTitles = []
       let journalTitles = []
 
@@ -83,7 +83,7 @@ module.exports = {
 
       const response = await fetch(`${baseUrl}movie/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`)
       const movie = await response.json()
-      res.render("details.ejs", { movie: movie, journalTitles: journalTitles, watchlistTitles: watchlistTitles});
+      res.render("details.ejs", { movie: movie, journal: journal, watchlist: watchlist});
     } catch (err) {
       console.log(err);
     }

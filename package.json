@@ -1,7 +1,7 @@
 {
-  "name": "binary-upload-boom",
+  "name": "MyMovies",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "Movie journalling app",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
