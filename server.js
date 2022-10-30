@@ -12,7 +12,6 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const listRoutes = require("./routes/lists");
 const commentRoutes = require("./routes/comments");
-const PORT = 2121
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -63,6 +62,6 @@ app.use("/list", listRoutes);
 app.use("/comment", commentRoutes);
 
 //Server Running
-app.listen(process.env.PORT || PORT, () => {
+app.listen(process.env.PORT || 2121, () => {
   console.log("Server is running, you better catch it!");
 });
