@@ -12,6 +12,7 @@ const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const listRoutes = require("./routes/lists");
 const commentRoutes = require("./routes/comments");
+const PORT = 2121
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
