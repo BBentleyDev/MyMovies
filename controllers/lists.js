@@ -1,7 +1,4 @@
-const ToWatch = require("../models/ToWatch");
-const Journal = require("../models/Journal");
 const List = require("../models/List");
-const baseUrl = 'https://api.themoviedb.org/3/'
 
 module.exports = {
     likeList: async (req, res) => {

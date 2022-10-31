@@ -2,7 +2,7 @@ const ToWatch = require("../models/ToWatch");
 const Journal = require("../models/Journal");
 const Comment = require("../models/Comment");
 const List = require("../models/List");
-const baseUrl = 'https://api.themoviedb.org/3/'
+const baseUrl = 'https://api.themoviedb.org/3/';
 
 
 module.exports = {
