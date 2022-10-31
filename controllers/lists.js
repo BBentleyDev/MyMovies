@@ -1,5 +1,3 @@
-const cloudinary = require("../middleware/cloudinary");
-const Post = require("../models/Post");
 const ToWatch = require("../models/toWatch");
 const Journal = require("../models/Journal");
 const List = require("../models/List");
