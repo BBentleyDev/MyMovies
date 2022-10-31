@@ -1,4 +1,4 @@
-const ToWatch = require("../models/toWatch");
+const ToWatch = require("../models/ToWatch");
 const Journal = require("../models/Journal");
 const Comment = require("../models/Comment");
 const List = require("../models/List");
