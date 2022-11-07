@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     //Plugging in DB string directly was only way to get heroku host to work
-    const conn = await mongoose.connect("mongodb+srv://my:movies@cluster0.lwcydqx.mongodb.net/?retryWrites=true&w=majority", {
+    const conn = await mongoose.connect(process.env.DB_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
