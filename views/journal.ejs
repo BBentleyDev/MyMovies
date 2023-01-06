@@ -36,7 +36,7 @@ height: 100;
                 <td class="align-middle" style="color: green"><%= journal[i].rating%></td>
                 <% } %>
 
-                <td class="align-middle text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
+                <td class="align-middle text-wrap text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
                 <td class="align-middle">
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Edit Journal Entry

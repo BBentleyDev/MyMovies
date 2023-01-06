@@ -61,7 +61,7 @@ module.exports = {
     try {
       const response = await fetch(`${baseUrl}search/movie?api_key=${process.env.API_KEY}&language=en-US&query=${req.body.search}&page=1&include_adult=false`)
       const movies = await response.json()
-      res.render("feed.ejs", { movies: movies.results });
+      res.render("searchResults.ejs", { movies: movies.results });
     } catch (err) {
       console.log(err);
     }

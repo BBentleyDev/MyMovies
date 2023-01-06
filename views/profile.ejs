@@ -55,7 +55,7 @@ height: 100vh;
             <% for (let i = 0; i < lists.length; i++) { %> 
               <a href="post/customList/<%= lists[i].id %>" class="list-group-item d-flex list-group-item-action justify-content-around">
                 <div class="col">
-                  <span><strong><%= lists[i].title %></strong></span>  
+                  <span><strong><%= lists[i].title %></strong><i> by <%= lists[i].userName %></i> </span>  
                 </div>
                 <div class="col">
                   <button class="disabled badge rounded-pill bg-primary" type="submit"><i class="far fa-thumbs-up" disabled></i> <%= lists[i].likes %></button>
