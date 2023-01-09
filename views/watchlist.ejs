@@ -17,16 +17,17 @@ height: 100;
           </tr>
         </thead>
         <tbody>
-              <% for(let i = 0, modal = 'modal'; i < watchlist.length; i++) {%>
+          <% let userWatchlist = watchlist.filter(movie => movie.user == user.id) %>
+              <% for(let i = 0, modal = 'modal'; i < userWatchlist.length; i++) {%>
               <tr class="text-center">
-                <td class="align-middle"><a href="/post/details/<%= watchlist[i].movieId%>"><img src="<%= watchlist[i].image%>" alt="movie poster"></a></td>
-                <td class="align-middle"><%= watchlist[i].title%></td>
-                <td class="align-middle"><%= watchlist[i].dateAdded%></td>
+                <td class="align-middle"><a href="/post/details/<%= userWatchlist[i].movieId%>"><img src="<%= userWatchlist[i].image%>" alt="movie poster"></a></td>
+                <td class="align-middle"><%= userWatchlist[i].title%></td>
+                <td class="align-middle"><%= userWatchlist[i].dateAdded%></td>
                 <td class="align-middle">
                   <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Add to Journal
                   </a>
-                  <form action="/post/deleteFromWatchList/<%= watchlist[i]._id%>?_method=DELETE" method="POST">
+                  <form action="/post/deleteFromWatchList/<%= userWatchlist[i]._id%>?_method=DELETE" method="POST">
                     <button type="submit" class="btn btn-danger mt-2">Delete</button>
                   </form>
                 </td>
@@ -36,7 +37,7 @@ height: 100;
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel"><%= watchlist[i].title%></h5>
+                      <h5 class="modal-title" id="exampleModalLabel"><%= userWatchlist[i].title%></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -68,7 +69,7 @@ height: 100;
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= watchlist[i].movieId%>">Add to Journal</button>
+                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= userWatchlist[i].movieId%>">Add to Journal</button>
                       </div>
                     </form>
                   </div>

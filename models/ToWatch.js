@@ -13,6 +13,10 @@ const ToWatchSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   dateAdded: {
     type: String,
     require: true,

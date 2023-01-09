@@ -15,6 +15,7 @@ module.exports = {
         title: movie.title,
         image: `https://image.tmdb.org/t/p/w185${movie.poster_path}`,
         movieId: req.body.movieId,
+        user: req.user.id,
         dateAdded: new Date().toLocaleDateString()
       });
       console.log("Movie added to Watch List!");
@@ -88,8 +89,9 @@ module.exports = {
   },
   getWatchlist: async (req, res) => {
     try {
-      const watchlist = await ToWatch.find().sort({ dateAdded: "desc" });
-      res.render("watchlist.ejs", { watchlist: watchlist });
+      let watchlist = await ToWatch.find().sort({ dateAdded: "desc" });
+      // watchlist = watchlist.filter(movie => movie.user == req.params.id)
+      res.render("watchlist.ejs", { watchlist: watchlist, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -97,7 +99,7 @@ module.exports = {
   getJournal: async (req, res) => {
     try {
       const journal = await Journal.find().sort({ dateWatched: "desc" });
-      res.render("journal.ejs", { journal: journal });
+      res.render("journal.ejs", { journal: journal, user: req.user });
     } catch (err) {
       console.log(err);
     }

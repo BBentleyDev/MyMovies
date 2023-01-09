@@ -19,29 +19,30 @@ height: 100;
           </tr>
         </thead>
         <tbody>
-              <% for(let i=0, modal='modal'; i < journal.length; i++) {%>
+          <% let userJournal = journal.filter(movie => movie.user == user.id) %>
+              <% for(let i=0, modal='modal'; i < userJournal.length; i++) {%>
               <tr class="text-center">
-                <td class="align-middle"><a href="/post/details/<%= journal[i].movieId%>"><img src="<%= journal[i].image%>" alt="movie poster"></a></td>
-                <td class="align-middle"><%= journal[i].title%></td>
-                <td class="align-middle"><%= journal[i].dateWatched%></td>
+                <td class="align-middle"><a href="/post/details/<%= userJournal[i].movieId%>"><img src="<%= userJournal[i].image%>" alt="movie poster"></a></td>
+                <td class="align-middle"><%= userJournal[i].title%></td>
+                <td class="align-middle"><%= userJournal[i].dateWatched%></td>
 
-                <% if (journal[i].rating <= 3) { %>
-                <td class="align-middle" style="color: red"><%= journal[i].rating%></td>
+                <% if (userJournal[i].rating <= 3) { %>
+                <td class="align-middle" style="color: red"><%= userJournal[i].rating%></td>
 
 
-                <% } else if (journal[i].rating > 3 && journal[i].rating <= 7) { %>
-                <td class="align-middle" style="color: black"><%= journal[i].rating%></td>
+                <% } else if (userJournal[i].rating > 3 && userJournal[i].rating <= 7) { %>
+                <td class="align-middle" style="color: black"><%= userJournal[i].rating%></td>
 
                 <% } else { %>
-                <td class="align-middle" style="color: green"><%= journal[i].rating%></td>
+                <td class="align-middle" style="color: green"><%= userJournal[i].rating%></td>
                 <% } %>
 
-                <td class="align-middle text-wrap text-truncate" style="max-width: 150px"><%= journal[i].comments%></td>
+                <td class="align-middle text-wrap text-truncate" style="max-width: 150px"><%= userJournal[i].comments%></td>
                 <td class="align-middle">
                   <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= modal + i%>">
                     Edit Journal Entry
                   </a>
-                  <form action="/post/deleteFromJournal/<%= journal[i]._id%>?_method=DELETE" method="POST">
+                  <form action="/post/deleteFromJournal/<%= userJournal[i]._id%>?_method=DELETE" method="POST">
                     <button type="submit" class="btn btn-danger mt-2">Delete</button>
                   </form>
                 </td>
@@ -51,21 +52,21 @@ height: 100;
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel"><%= journal[i].title%></h5>
+                      <h5 class="modal-title" id="exampleModalLabel"><%= userJournal[i].title%></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                      <form action="/post/editJournal/<%= journal[i]._id%>?_method=PUT" method="POST">
+                      <form action="/post/editJournal/<%= userJournal[i]._id%>?_method=PUT" method="POST">
                         <div class="mb-3">
                           <label for="dateWatched" class="col-form-label">Date watched:</label>
-                          <input name="dateWatched" type="date" class="form-control" id="dateWatched" value="<%= journal[i].dateWatched%>">
+                          <input name="dateWatched" type="date" class="form-control" id="dateWatched" value="<%= userJournal[i].dateWatched%>">
                         </div>
                         <div class="mb-3">
                           <label for="rating" class="col-form-label">Rating:</label>
                           <select name="rating" class="form-control" id="rating">
                             <% for (let y = 1; y <= 10; y++) { %>
-                              <% if (journal[i].rating == y) { %>
+                              <% if (userJournal[i].rating == y) { %>
                                 <option value="<%= y %>" selected> <%= y %> </option>  
                               <% } else { %>
                               <option value="<%= y %>"> <%= y %> </option>
@@ -75,13 +76,13 @@ height: 100;
                         </div>
                         <div class="mb-3">
                           <label for="comments" class="col-form-label">Comments:</label>
-                          <textarea name="comments" class="form-control" id="comments"><%= journal[i].comments%></textarea>
+                          <textarea name="comments" class="form-control" id="comments"><%= userJournal[i].comments%></textarea>
                         </div>
                         
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= journal[i].movieId%>">Save Changes</button>
+                        <button type="submit" class="btn btn-primary" name='movieId' value="<%= userJournal[i].movieId%>">Save Changes</button>
                       </div>
                     </form>
                   </div>
