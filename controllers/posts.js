@@ -37,6 +37,7 @@ module.exports = {
         dateWatched: req.body.dateWatched,
         rating: req.body.rating,
         comments: req.body.comments,
+        user: req.user.id
       });
       console.log("Movie added to Journal!");
       res.redirect("/journal");
